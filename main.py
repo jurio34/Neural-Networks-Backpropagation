@@ -26,10 +26,10 @@ def main():
     learning_rate = 0.5
     epocas = 10000
 
-    # Instancia o modelo importado do engine.py
+    # Instancia o modelo importado
     nn = NeuralNetwork(input_size, hidden_size, output_size)
 
-    print("--- Treinando a Rede Neural (engine.py) ---")
+    print("--- Training the Neural Network ---")
     for epoca in range(1, epocas + 1):
         # Forward Pass
         output = nn.forward(X)
@@ -40,13 +40,13 @@ def main():
         # Monitoramento do Erro
         if epoca % 2000 == 0:
             loss = mean_squared_error(y, output)
-            print(f"Época {epoca}/{epocas} - Perda (MSE): {loss:.6f}")
+            print(f"Epoch {epoca}/{epocas} - Loss (MSE): {loss:.6f}")
 
-    print("\n--- Resultados Finais ---")
+    print("\n--- Final Results ---")
     previsoes = nn.forward(X)
     for entrada, pred in zip(X, previsoes):
         classe = int(pred[0] > 0.5)
-        print(f"Entrada: {entrada} -> Saída: {pred[0]:.4f} -> Classe: {classe}")
+        print(f"Input: {entrada} -> Output: {pred[0]:.4f} -> Class: {classe}")
 
 
 if __name__ == "__main__":
